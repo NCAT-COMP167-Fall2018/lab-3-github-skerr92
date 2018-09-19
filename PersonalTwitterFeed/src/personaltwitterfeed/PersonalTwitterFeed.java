@@ -34,7 +34,8 @@ public class PersonalTwitterFeed {
         int numTweets = 0;
         
         while(numTweets < (MAX_NUMBER_TWEETS - 1)) {
-            tweets[numTweets] = keyboard.nextLine();
+            String timeStamp = getCurrentTimeStamp();
+            tweets[numTweets] = keyboard.nextLine() + timeStamp;
             numTweets++;
             
             System.out.println(tweeterName + "'s Personal Twitter Feed:");
@@ -52,6 +53,11 @@ public class PersonalTwitterFeed {
         }
         
         System.out.println("Your twitter feed is full");
+    }
+    public static String getCurrentTimeStamp() {
+        SimpleDateFormat newFormat = new SimpleDateFormat("dd/MM/yyy HH:mm:ss");
+        Date tweetDate = new Date();
+        return newFormat.format(tweetDate);
     }
     
 }
