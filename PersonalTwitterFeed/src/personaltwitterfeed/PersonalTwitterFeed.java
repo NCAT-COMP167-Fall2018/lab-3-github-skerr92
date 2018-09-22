@@ -32,11 +32,26 @@ public class PersonalTwitterFeed {
         System.out.println("Enter your tweets and I will add them to your timeline!");
         
         int numTweets = 0;
+        newTweet(tweeterName, tweets, numTweets);
         
+        
+       
+    }
+    public static String getCurrentTimeStamp() {
+        SimpleDateFormat newFormat = new SimpleDateFormat("dd/MM/yyy HH:mm:ss");
+        Date dateTweeter = new Date();
+        String timeStamp = newFormat.format(dateTweeter);
+        return timeStamp;
+        
+        
+    }
+    public static void newTweet(String tweeterName, String[] tweets, int numTweets) {
         while(numTweets < (MAX_NUMBER_TWEETS - 1)) {
-            tweets[numTweets] = keyboard.nextLine();
+            Scanner keyboard1 = new Scanner(System.in);
+            String timeStamp = getCurrentTimeStamp();
+            String userInput = keyboard1.next() + timeStamp;
+            tweets[numTweets] = userInput;
             numTweets++;
-            
             System.out.println(tweeterName + "'s Personal Twitter Feed:");
             for(int i = 0; i < numTweets; i++) {
                 System.out.println("- " + tweets[i]);
@@ -50,8 +65,11 @@ public class PersonalTwitterFeed {
             if(numTweets < (MAX_NUMBER_TWEETS - 1))
                 System.out.println("Enter your next tweet:");
         }
-        
         System.out.println("Your twitter feed is full");
+        
+       
+        
+       
     }
     
 }
